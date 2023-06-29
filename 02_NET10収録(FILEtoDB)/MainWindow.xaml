@@ -1,0 +1,254 @@
+﻿<Window x:Class="_02_NET10収録_FILEtoDB_.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_02_NET10収録_FILEtoDB_"
+        mc:Ignorable="d"
+        Title="NET10収録(FILE-&gt;DB)" Height="497" Width="834" Loaded="Window_Loaded" Closing="Window_Closing" Closed="Window_Closed" Icon="FILEtoDB.ico">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF001923" Offset="1"/>
+            <GradientStop Color="#FF003E55"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Viewbox>
+        <Canvas Height="466" Width="826">
+            <WrapPanel HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="826.833">
+                <WrapPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF616B86" Offset="0.027"/>
+                        <GradientStop Color="#FF414959" Offset="0.462"/>
+                        <GradientStop Color="#FF121726" Offset="0.929"/>
+                        <GradientStop Color="#FF18191C" Offset="0.52"/>
+                        <GradientStop Color="#FF343E61" Offset="1"/>
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF343E61" Offset="0.959"/>
+                    </LinearGradientBrush>
+                </WrapPanel.Background>
+            </WrapPanel>
+            <Label x:Name="Label_MainTitle" Content="NET10収録 (FILE &gt;&gt; DB)" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="826.993" HorizontalContentAlignment="Center" Height="49" FontSize="40" VerticalContentAlignment="Center" Padding="5,4,5,0" FontFamily="Impact" Canvas.Top="-5">
+                <Label.Effect>
+                    <BlurEffect Radius="10"/>
+                </Label.Effect>
+            </Label>
+            <Label Content="NET10収録 (FILE &gt;&gt; DB)" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" Width="828.833" HorizontalContentAlignment="Center" Height="49" FontSize="40" VerticalContentAlignment="Center" Padding="0" FontFamily="Impact" Canvas.Top="-1"/>
+            <Border x:Name="Border_RecordingInfo" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Padding="0" CornerRadius="2" Canvas.Left="11" Canvas.Top="57" Width="798" Height="265">
+                <Canvas>
+                    <WrapPanel HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="790" Canvas.Left="3" Canvas.Top="3">
+                        <WrapPanel.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF616B86" Offset="0.027"/>
+                                <GradientStop Color="#FF414959" Offset="0.462"/>
+                                <GradientStop Color="#FF121726" Offset="0.929"/>
+                                <GradientStop Color="#FF18191C" Offset="0.52"/>
+                                <GradientStop Color="#FF343E61" Offset="1"/>
+                                <GradientStop Color="Black"/>
+                                <GradientStop Color="#FF343E61" Offset="0.959"/>
+                            </LinearGradientBrush>
+                        </WrapPanel.Background>
+                    </WrapPanel>
+                    <Label Content="収録情報" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="25" FontSize="16" Padding="15,0,5,0" FontWeight="Bold" FontFamily="Yu Gothic UI Semibold" Canvas.Left="3" Canvas.Top="3" Foreground="{Binding Foreground, ElementName=Label_MainTitle}">
+                        <Label.Effect>
+                            <DropShadowEffect ShadowDepth="0"/>
+                        </Label.Effect>
+                    </Label>
+                    <Canvas x:Name="Canvas_Info1" Height="28" Canvas.Left="18" Canvas.Top="29" Width="758">
+                        <Label x:Name="lbDivName1" Content="DTMaster" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{Binding Foreground, ElementName=Label_MainTitle}"/>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="88.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbTotalFileCount1" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="186.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileCount1" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="155" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="284.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileName1" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="313" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="445.334" Canvas.Top="4">
+                            <ProgressBar x:Name="pbProgress1" Background="#FF2B2B2B"/>
+                        </Border>
+                    </Canvas>
+                    <Canvas x:Name="Canvas_Info2" Height="28" Canvas.Left="18" Canvas.Top="54.334" Width="758">
+                        <Label x:Name="lbDivName2" Content="NET10 Data" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{Binding Foreground, ElementName=Label_MainTitle}"/>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="88.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbTotalFileCount2" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="186.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileCount2" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="155" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="284.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileName2" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="313" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="445.334" Canvas.Top="4">
+                            <ProgressBar x:Name="pbProgress2" Background="#FF2B2B2B"/>
+                        </Border>
+                    </Canvas>
+                    <Canvas x:Name="Canvas_Info3" Height="28" Canvas.Left="18" Canvas.Top="79.668" Width="758" Visibility="Hidden">
+                        <Label x:Name="lbDivName3" Content="油回収" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{Binding Foreground, ElementName=Label_MainTitle}"/>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="88.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbTotalFileCount3" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="186.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileCount3" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="155" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="284.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileName3" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="313" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="445.334" Canvas.Top="4">
+                            <ProgressBar x:Name="pbProgress3"/>
+                        </Border>
+                    </Canvas>
+                    <Canvas x:Name="Canvas_Info4" Height="28" Canvas.Left="18" Canvas.Top="105.002" Width="758" Visibility="Hidden">
+                        <Label x:Name="lbDivName4" Content="No.1 推進" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{Binding Foreground, ElementName=Label_MainTitle}"/>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="88.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbTotalFileCount4" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="186.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileCount4" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="155" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="284.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileName4" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="313" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="445.334" Canvas.Top="4">
+                            <ProgressBar x:Name="pbProgress4"/>
+                        </Border>
+                    </Canvas>
+                    <Canvas x:Name="Canvas_Info5" Height="28" Canvas.Left="18" Canvas.Top="130.336" Width="758" Visibility="Hidden">
+                        <Label x:Name="lbDivName5" Content="No.2 推進" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{Binding Foreground, ElementName=Label_MainTitle}"/>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="88.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbTotalFileCount5" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="186.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileCount5" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="155" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="284.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileName5" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="313" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="445.334" Canvas.Top="4">
+                            <ProgressBar x:Name="pbProgress5"/>
+                        </Border>
+                    </Canvas>
+                    <Canvas x:Name="Canvas_Info6" Height="28" Canvas.Left="18" Canvas.Top="155.67" Width="758" Visibility="Hidden">
+                        <Label x:Name="lbDivName6" Content="No.1 主機" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{Binding Foreground, ElementName=Label_MainTitle}"/>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="88.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbTotalFileCount6" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="186.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileCount6" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="155" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="284.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileName6" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="313" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="445.334" Canvas.Top="4">
+                            <ProgressBar x:Name="pbProgress6"/>
+                        </Border>
+                    </Canvas>
+                    <Canvas x:Name="Canvas_Info7" Height="28" Canvas.Left="18" Canvas.Top="181.004" Width="758" Visibility="Hidden">
+                        <Label x:Name="lbDivName7" Content="No.2 主機" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{Binding Foreground, ElementName=Label_MainTitle}"/>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="88.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbTotalFileCount7" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="186.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileCount7" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="155" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="284.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileName7" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="313" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="445.334" Canvas.Top="4">
+                            <ProgressBar x:Name="pbProgress7"/>
+                        </Border>
+                    </Canvas>
+                    <Canvas x:Name="Canvas_Info8" Height="28" Canvas.Left="18" Canvas.Top="206.338" Width="758" Visibility="Hidden">
+                        <Label x:Name="lbDivName8" Content="補機" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{Binding Foreground, ElementName=Label_MainTitle}"/>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="88.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbTotalFileCount8" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="186.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileCount8" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="155" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="284.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileName8" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="313" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="445.334" Canvas.Top="4">
+                            <ProgressBar x:Name="pbProgress8"/>
+                        </Border>
+                    </Canvas>
+                    <Canvas x:Name="Canvas_Info9" Height="28" Canvas.Left="18" Canvas.Top="231.672" Width="758" Visibility="Hidden">
+                        <Label x:Name="lbDivName9" Content="COMP盤" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{Binding Foreground, ElementName=Label_MainTitle}"/>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="88.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbTotalFileCount9" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="90" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="186.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileCount9" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="155" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="284.334" Canvas.Top="4">
+                            <TextBlock x:Name="lbFileName9" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="313" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="445.334" Canvas.Top="4">
+                            <ProgressBar x:Name="pbProgress9"/>
+                        </Border>
+                    </Canvas>
+                </Canvas>
+            </Border>
+            <Border x:Name="Border_TargetData" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Padding="0" CornerRadius="2" Canvas.Left="11" Canvas.Top="331" Width="798" Height="62">
+                <Canvas>
+                    <WrapPanel HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="790" Canvas.Left="3" Canvas.Top="3">
+                        <WrapPanel.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF616B86" Offset="0.027"/>
+                                <GradientStop Color="#FF414959" Offset="0.462"/>
+                                <GradientStop Color="#FF121726" Offset="0.929"/>
+                                <GradientStop Color="#FF18191C" Offset="0.52"/>
+                                <GradientStop Color="#FF343E61" Offset="1"/>
+                                <GradientStop Color="Black"/>
+                                <GradientStop Color="#FF343E61" Offset="0.959"/>
+                            </LinearGradientBrush>
+                        </WrapPanel.Background>
+                    </WrapPanel>
+                    <Label Content="収録先DB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="25" FontSize="16" Padding="15,0,5,0" FontWeight="Bold" FontFamily="Yu Gothic UI Semibold" Canvas.Left="3" Canvas.Top="3" Foreground="{Binding Foreground, ElementName=Label_MainTitle}">
+                        <Label.Effect>
+                            <DropShadowEffect ShadowDepth="0"/>
+                        </Label.Effect>
+                    </Label>
+                    <Canvas x:Name="Canvas_Info10" Height="28" Canvas.Left="18" Canvas.Top="29" Width="758">
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="100" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="0" Canvas.Top="4">
+                            <TextBlock x:Name="lbTargetDB" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="120" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="108" Canvas.Top="4">
+                            <TextBlock x:Name="lbTargetDate" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="200" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="236" Canvas.Top="4">
+                            <TextBlock x:Name="lbRecFolder" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                        <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="314" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="444" Canvas.Top="4">
+                            <TextBlock x:Name="lbTargetFileName" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                        </Border>
+                    </Canvas>
+                </Canvas>
+            </Border>
+            <Canvas x:Name="Canvas_ErrorInfo" Height="28" Canvas.Left="8" Canvas.Top="397" Width="801">
+                <Label Content="エラー情報" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{Binding Foreground, ElementName=Label_MainTitle}"/>
+                <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="737" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1" Canvas.Left="64" Canvas.Top="4">
+                    <TextBlock x:Name="txtError" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                </Border>
+            </Canvas>
+            <WrapPanel Height="84" Orientation="Horizontal" Canvas.Top="430" Canvas.Left="11" Width="805">
+                <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="344" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1">
+                    <TextBlock x:Name="stlbInfo" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                </Border>
+                <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="120" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1">
+                    <TextBlock x:Name="toolStripStatusLabel2" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                </Border>
+                <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="113.333" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1">
+                    <TextBlock x:Name="toolStripStatusLabel3" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                </Border>
+                <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="42" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1">
+                    <TextBlock x:Name="stlbRecWaitCount" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                </Border>
+                <Border HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="180" BorderBrush="{Binding Foreground, ElementName=Label_MainTitle}" BorderThickness="1">
+                    <TextBlock x:Name="toolStripStatusLabel1" TextWrapping="Wrap" Text="-" Foreground="White" TextAlignment="Center"/>
+                </Border>
+            </WrapPanel>
+        </Canvas>
+    </Viewbox>
+</Window>
